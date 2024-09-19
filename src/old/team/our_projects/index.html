@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our team's projects - Aridity</title>
+
+    <!-- using cdn scripts so us developers can properly view the website without deploying -->
+
+    <!-- update the version number as needed -->
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-remote-config-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/firebase.js?useEmulator=true"></script>
+</head>
+<body>
+    <style>
+        body {
+            background: linear-gradient(270deg, #8900e6, #4100c4);
+            background-size: 400% 400%;
+            -webkit-animation: Gradient 5s ease infinite;
+            -moz-animation: Gradient 5s ease infinite;
+            -o-animation: Gradient 5s ease infinite;
+            animation: Gradient 5s ease infinite;
+        }
+
+        @-webkit-keyframes Gradient {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @-moz-keyframes Gradient {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @-o-keyframes Gradient {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+        @keyframes Gradient {
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
+        }
+
+        #container {
+            background-color: rgba(128, 128, 128, 0.753);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .projectInfoContainer {
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+
+    <div id="container">
+        <br>
+        <h1>Our team projects</h1>
+        <p>These are the projects that we are currently making</p>
+        <h2>Sourcemods</h2>
+        <div class="projectInfoContainer" id="bf" 
+        style="background-color: rgba(192, 192, 18, 0.925);">
+            <br>
+            <h4>Beta Fortress</h4>
+            <section>
+                <details>
+                    <section>
+                        <label style="font-weight: bolder;">Description</label>
+                        <p>Beta Fortress is a TF2 Source Mod that aims to re-imagine the beta version of the game during late 2006-2007.</p>
+                    </section>
+                </details>
+                <a href="./bf">Visit the project's page</a>
+            </section>
+            <br>
+        </div>
+        <br>
+        <div class="projectInfoContainer" id="tf2cp" 
+        style="background-color: rgba(189, 155, 3, 0.925);">
+            <br>
+            <h4>Team Fortress 2 Classic Prime</h4>
+            <section>
+                <details>
+                    <section>
+                        <label style="font-weight: bolder;">Description</label>
+                        <p>Team Fortress 2 Classic Prime is a mod that refines, and expands 2016 Team Fortress 2 Classic 2.0.0 Beta 4, which also includes the Deathmatch mode.</p>
+                    </section>
+                </details>
+                <a href="./tf2cp">Visit the project's page</a>
+            </section>
+            <br>
+        </div>
+        <br>
+        <div class="projectInfoContainer" id="hl2dmce" 
+        style="background-color: rgba(226, 170, 16, 0.925);">
+            <br>
+            <h4>Half-Life 2 Deathmatch: Community Edition</h4>
+            <section>
+                <details>
+                    <section>
+                        <label style="font-weight: bolder;">Description</label>
+                        <p>Half-Life 2 Deathmatch: Community Edition is a HL2:DM mod that fixes shit from the base game and also adds more maps, weapons, a new Campaign gamemode and stuff.</p>
+                    </section>
+                </details>
+                <a href="./hl2dmce">Visit the project's page</a>
+            </section>
+            <br>
+        </div>
+        <br>
+        <h2>Operating systems</h2>
+        <div class="projectInfoContainer" id="batarongos" 
+        style="background-color: rgba(226, 170, 16, 0.925);">
+            <br>
+            <h4>batarongOS</h4>
+            <section>
+                <details>
+                    <section>
+                        <label style="font-weight: bolder;">Description</label>
+                        <p>BatarongOS is a shitpost Linux distribution based off Canonical's <a style="color: rgb(255, 217, 0);" href="https://ubuntu.com">Ubuntu</a> Linux distribution specifically made for a random guy on YouTube by the name of "Bringus Studios"</p>
+                    </section>
+                </details>
+                <a href="./batarongos">Visit the project's page</a>
+            </section>
+            <br>
+        </div>
+        <br>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+
+    <link rel="stylesheet" href="/panorama-styles.css"/>
+    <link rel="stylesheet" href="./../styles.css"/>
+</head>
+<body style="background-color: transparent;">
+    <div id="loaderContainer">
+        <h1>Aridity is loading...</h1>
+        <div id="loader"></div>
+    </div>
+
+    <div class="newsArticleContainer" id="batarongOsNews"></div>
+    <div class="newsArticleContainer" id="bfNews"></div>
+    <div class="newsArticleContainer" id="hl2dmceNews"></div>
+    <div class="newsArticleContainer" id="tf2cpNews"></div>
+    <div class="newsArticleContainer" id="aridSiteNews"></div>
+
+    <div class="newsArticleContainer" id="aridSiteNews">
+        <h2>The <span style="color: aqua;">Aridity</span> Website update 08/26/2024 13:10 (1:10pm)</h2>
+        <p>i release a random new update</p>
+        <ul>
+            <li><p>fixed a random bug where the messagebox element closes upon showing after opening the team panel</p></li>
+        </ul>
+    </div>
+
+    <div class="newsArticleContainer" id="aridSiteNews">
+        <h2>The <span style="color: aqua;">Aridity</span> Website update 08/25/2024 00:03 (12:03am)</h2>
+        <p>i release a random new update</p>
+        <ul>
+            <li><p>updated the bg</p></li>
+            <li><p>added a dancing hoovy</p></li>
+        </ul>
+    </div>
+
+
+    <div class="newsArticleContainer" id="aridSiteNews">
+        <h2>The <span style="color: aqua;">Aridity</span> Website update 08/24/2024 23:45 (11:55pm)</h2>
+        <p>i release a random new update</p>
+        <ul>
+            <li><p>Added the new team panel (contains the team members and team projects page)</p></li>
+        </ul>
+    </div>
+
+    <div class="newsArticleContainer" id="aridSiteNews">
+        <h2>The <span style="color: aqua;">Aridity</span> Website's new look</h2>
+        <p>
+            The <span style="color: aqua;">Aridity</span> Website now has a new look that replicates Valve's Counter-Strike: Global Offensive <span style="font-family: 'Stratum 2 Bold';">Panorama</span> user interface. <br>
+            Isn't it better? <br>
+            <br>
+            Credits to maksw2 for making the original main menu tho.
+            <br>
+            
+            <br> <br>
+            This new "Panorama UI"-styled UI framework will be shared to the public soon! (or not) So, stay tuned by joining our Discord server!
+        </p>
+    </div>
+    <div class="newsArticleContainer" id="aridSiteNews">
+        <h2>New web-based UI framework by the <span style="color: aqua;">Aridity</span> Team</h2>
+        <p>
+            Welcome to a new UI framework that replicates Valve's Counter-Strike: Global Offensive <span style="font-family: 'Stratum 2 Bold';">Panorama</span> user interface.
+            <br> <br>
+            How do I describe an web-based UI framework that literally copies the same (almost) style as CS:GO's UI? well idk.
+        </p>
+    </div>
+
+    <script src="../globalvars.js"></script>
+
+    <script>
+        const batarongOSNews = document.querySelector('#batarongOsNews');
+        const bfNews = document.querySelector('#bfNews');
+        const tf2cpNews = document.querySelector('#tf2cpNews');
+        const hl2dmceNews = document.querySelector('#hl2dmceNews');
+        const aridSiteNews = document.querySelector('#aridSiteNews');
+
+        if(sortByBatarongOS == true) {
+            batarongOSNews.style.display = 'block';
+        } else {
+            batarongOSNews.style.display = 'none';
+        }
+        if(sortByBetaFortress == true) {
+            bfNews.style.display = 'block';
+        } else {
+            bfNews.style.display = 'none';
+        }
+        if(sortByTF2CP == true) {
+            tf2cpNews.style.display = 'block';
+        } else {
+            tf2cpNews.style.display = 'none';
+        }
+        if(sortByHL2DMCE == true) {
+            hl2dmceNews.style.display = 'block';
+        } else {
+            hl2dmceNews.style.display = 'none';
+        }
+        if(sortByAridSite == true) {
+            aridSiteNews.style.display = 'block';
+        } else {
+            aridSiteNews.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var loaderContainerEl = document.querySelector('#loaderContainer');
+            loaderContainerEl.style.display = 'none';
+            loaderContainerEl.style.zIndex = '-100';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meet the team - Aridity</title>
+    <meta content="The Aridity Team members" property="og:title" />
+    <meta 
+    content="List of members for each Aridity Team projects" 
+    property="og:description" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+
+    <!-- using cdn scripts so us developers can properly view the website without deploying -->
+
+    <!-- update the version number as needed -->
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-remote-config-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/firebase.js?useEmulator=true"></script>
+
+    <link rel="stylesheet" href="../../styles.css"/>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body class="applyGradientAridBackground">
+    <style>
+      :root {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #mainHome {
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      #loggedInHome {
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .navbar {
+        background-color: rgba(0, 191, 255, 0.562);
+        display: block;
+        top: 10px;
+        height: 40px;
+      }
+
+      .navbar .navbarItem {
+        display: inline;
+        height: 40px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bolder;
+        transition: ease-in-out 0.2s;
+      }
+
+      .navbar .navbarItem:hover {
+        transform: scale(1.1);
+        background-color: #039be5;
+      }
+
+      .dropDownMenu {
+        background-color: #039be5;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+      }
+
+      .dropDownItem {
+        display: inline;
+        height: 40px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bolder;
+        transition: ease-in-out 0.2s;
+      }
+
+      .dropDownItem:hover {
+        background-color: skyblue;
+      }
+
+      .aridityHeaderText {
+        color: white
+      }
+
+      .friendsContainer {
+        background-color: #039be5;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+      }
+
+      .availableAppsContainer {
+        background-color: #039be5;
+        color: white;
+        border-radius: 5px;
+        position: relative;
+      }
+
+      .appInstall {
+        display: inline;
+        height: 40px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bolder;
+        transition: ease-in-out 0.2s;
+      }
+
+      .appInstall:hover {
+        background-color: skyblue;
+      }
+
+      .aridityHeaderText {
+        color: white
+      }
+
+      .welcomeText {
+        text-align: left;
+      }
+
+      .aboutAridityText {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+      }
+
+      .teamMembersContainer {
+        background-color: #039be5;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+      }
+
+      .teamMembersContainer img {
+        position: inline;
+        width: 110px;
+        height: 110px;
+        border: 5px solid rgb(12, 148, 202);
+      }
+
+      .teamMembersContainer .socialLinks {
+        background-color: transparent;
+        border: none;
+        outline: none;
+      }
+
+      .teamMembersContainer .socialLinks img {
+        background-color: transparent;
+        position: inline;
+        width: 35px;
+        height: 35px;
+        border: none;
+      }
+
+      .d-flex {
+        display: flex!important;
+      }
+
+      .teamMember {
+        background-color: skyblue;
+        border-radius: 10px;
+        max-width: 275px;
+        max-height: 250px;
+        height: 250px;
+      }
+    </style>
+
+    <script>
+      function redirectTo(url) {
+        window.location.href = url;
+      }
+    </script> 
+
+      <div class="navbar" id="justANavBar">
+        <button class="navbarItem" id="homeBtn" onclick="redirectTo('/');">Home</button>
+        <button class="navbarItem" id="teamMembersBtn" onclick="redirectTo('/team/team_members');">Team members</button>
+        <button class="navbarItem" id="signInBtn" style="position: absolute; right: 0;" onclick="redirectTo('/login.html');">Login</button>
+      </div>
+      <div class="navbar" id="mainNavBar">
+        <button class="navbarItem" id="homeBtn" onclick="redirectTo('/');">Home</button>
+        <button class="navbarItem" id="libraryBtn" onclick="redirectTo('/library.html');">Library</button>
+        <button class="navbarItem" id="teamMembersBtn" onclick="redirectTo('/team/team_members');">Team members</button>
+        <button class="navbarItem" id="settingsBtn" onmouseover="showSettingsDropDown(true);"
+        >Settings</button>
+      </div>
+      <div class="dropDownMenu" id="settingsDropDown">
+        <button class="dropDownItem" 
+        onclick="redirectTo('settings.html?general');">General</button>
+        <button class="dropDownItem"
+        onclick="redirectTo('settings.html?account');">Account</button>
+        <button class="dropDownItem" style="position: absolute; right: 0;"
+        onclick="showSettingsDropDown(false);">X</button>
+      </div>
+
+        <h1 class="header aridityHeaderText">Meet the <span style="color: skyblue;">team</span> behind our projects!</h1>
+        <div class="teamMembersContainer" id="team_members">
+          <br>
+          <p>note that the other members will included in this page soon</p>
+          <section>
+              <div id="tf2cPrimeTeamMembersAndContributors">
+                  <h2><span style="color: rgb(199, 109, 24);">Team Fortress 2 Classic Prime</span> Team</h2>
+                  <h3>Developers (actual)</h3>
+                  <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                    style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="twilightbob">
+                        <p>
+                            <img src="../../assets/team_members/twilightbob.png"> <br>
+                            <span style="font-weight: bolder;">TwilightBob</span><br>
+                            Lead developer, animator, level designer & programmer<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199090200486">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/TwilightBob">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;"  
+                    id="bigbeef">
+                        <p>
+                            <img src="../../assets/team_members/big_beef.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">Big Beef</span><br>
+                            Lead developer, Level designer, texture artist, animator<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UClRI4qbtzdVYwqtxU6EifVw">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/whyareyouhereareyououtofyourmind/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/bvvth556epic">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <h3>Contributors</h3>
+                <div class="d-flex align-items-center justify-content-center" 
+                    style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;"  
+                    id="practicemedicine">
+                        <p>
+                            <img src="../../assets/team_members/practicemedicine.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                            Helped with the Coplay implementation<br>
+                            <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;"  
+                    id="grub_pl">
+                        <p>
+                            <img src="../../assets/team_members/grub_pl.png"> <br>
+                            <span style="font-weight: bolder;">Grub PL</span><br>
+                            Playtester, level designer, bucket icon artist<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/GrubPLPL">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/GrubPL">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="notop">
+                        <p>
+                            <img src="../../assets/team_members/nobitches.png"> <br>
+                            <span style="font-weight: bolder;">NoTop/RusBaton</span><br>
+                            Playtester, provided the HD version of the 2014 TF2Classic logo<br>
+                            <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199106187025">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/RusBaton">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+              </div>
+          </section>
+          <section>
+              <div id="hl2DMCETeamMembersAndContributors">
+                  <h2><span style="color: rgb(226, 194, 12);">Half-Life 2 Deathmatch: Community Edition</span> Team</h2>
+                  <h3>Developers (actual)</h3>
+                  <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                    style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="practicemedicine">
+                        <p>
+                            <img src="../../assets/team_members/practicemedicine.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                            Lead developer, programmer & level designer<br>
+                            <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="twilightbob">
+                        <p>
+                            <img src="../../assets/team_members/twilightbob.png"> <br>
+                            <span style="font-weight: bolder;">TwilightBob</span><br>
+                            Modeller, level designer & programmer<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199090200486">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/TwilightBob">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="bigbeef">
+                        <p>
+                            <img src="../../assets/team_members/big_beef.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">Big Beef</span><br>
+                            Level designer<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UClRI4qbtzdVYwqtxU6EifVw">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/whyareyouhereareyououtofyourmind/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/bvvth556epic">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="yourlocalmoon">
+                        <p>
+                            <img src="../../assets/team_members/yourlocalmoon.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">YourLocalMoon</span><br>
+                            Programmer<br>
+                            <br>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="universebreaker">
+                        <p>
+                            <img src="../../assets/team_members/universebreaker.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">nico/universebreaker/coffee table fox</span><br>
+                            Level designer & Animator (only on SFM sadge)<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCbRQzbaPKoz47TAN7sUSheA">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199507821217">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/universe-breaker">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+              </div>
+          </section>
+          <section>
+              <div id="bfTeamMembersAndContributors">
+                  <h2><span style="color: rgb(192, 192, 9);">Beta Fortress</span> Team</h2>
+                  <h3>Developers (actual)</h3>
+                  <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                    style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="twilightbob">
+                        <p>
+                            <img src="../../assets/team_members/twilightbob.png"> <br>
+                            <span style="font-weight: bolder;">TwilightBob</span><br>
+                            Lead developer, modeller, level designer & programmer<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199090200486">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/TwilightBob">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="mrmalos">
+                        <p>
+                            <img src="../../assets/team_members/mrmalos.png"> <br>
+                            <span style="font-weight: bolder;">Mr. Malos</span><br>
+                            Former lead developer, texture artist<br> <br> <br> <br>           
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="bigbeef">
+                        <p>
+                            <img src="../../assets/team_members/big_beef.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">Big Beef</span><br>
+                            Level designer, texture artist & scripter<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UClRI4qbtzdVYwqtxU6EifVw">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/whyareyouhereareyououtofyourmind/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/bvvth556epic">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="practicemedicine">
+                        <p>
+                            <img src="../../assets/team_members/practicemedicine.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                            Programmer<br>
+                            <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <h3>Contributors</h3>
+                <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="grub_pl">
+                        <p>
+                            <img src="../../assets/team_members/grub_pl.png"> <br>
+                            <span style="font-weight: bolder;">Grub PL</span><br>
+                            Provided map information images for ad_dustbowl2, Playtester <br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/GrubPLPL">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/GrubPL">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+              </div>
+          </section>
+          <section>
+              <div id="batarongOSTeamMembersAndContributors">
+                  <h2><span style="color: yellow;">batarongOS</span> Team</h2>
+                  <h3>Developers (actual)</h3>
+                  <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                    style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="practicemedicine">
+                        <p>
+                            <img src="../../assets/team_members/practicemedicine.png"
+                            style="object-fit: cover;"> <br>
+                            <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                            Lead developer & "archiso" configuration guy<br>
+                            <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="rilabug">
+                        <p>
+                            <img src="../../assets/team_members/rilabug.png"> <br>
+                            <span style="font-weight: bolder;">Rilabug</span><br>
+                            Lead developer, Plymouth theme developer, publisher<br>
+                            <a class="socialLinks" href="https://www.youtube.com/channel/UCoje_x855Z4VWa7u2zXns7Q">
+                                <img src="../../assets/social_platforms/youtube-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://www.twitch.tv/bluspyj4g">
+                                <img src="../../assets/social_platforms/twitch-icon.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://steamcommunity.com/id/Rilabug/">
+                                <img src="../../assets/social_platforms/steam-logo.png"/>
+                            </a>
+                            <a class="socialLinks" href="https://github.com/Rilabug">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                        </p>
+                    </div>
+                    <div 
+                    class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                    style="display: grid;" 
+                    id="timmy">
+                        <p>
+                            <img src="../../assets/team_members/timmeh.png"> <br>
+                            <span style="font-weight: bolder;">Timmy</span> <br>
+                            The "customization" guy<br>
+                            <a class="socialLinks" href="https://github.com/lolimjustherefornoreason">
+                              <img src="../../assets/social_platforms/github-logo.png"/>
+                            </a>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+              </div>
+          </section>
+          <br>
+        </div>
+
+    
+    <p id="load">Firebase SDK Loading&hellip;</p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const queryString = window.location.search;
+	      console.log("current queryString is: " + queryString);
+
+	      const urlParams = new URLSearchParams(queryString);
+
+        const tf2cprimeTeam = document.querySelector("#tf2cPrimeTeamMembersAndContributors");
+        const hl2dmceTeam = document.querySelector("#hl2DMCETeamMembersAndContributors");
+        const bfTeam = document.querySelector("#bfTeamMembersAndContributors");
+        const batarongOSTeam = document.querySelector("#batarongOSTeamMembersAndContributors");
+
+        if(urlParams.has("project", "tf2cprime")) {
+            tf2cprimeTeam.style.display = 'block';
+            hl2dmceTeam.style.display = 'none';
+            bfTeam.style.display = 'none';
+            batarongOSTeam.style.display = 'none';
+        } else if(urlParams.has("project", "hl2dmce")) {
+            tf2cprimeTeam.style.display = 'none';
+            hl2dmceTeam.style.display = 'block';
+            bfTeam.style.display = 'none';
+            batarongOSTeam.style.display = 'none';
+        } else if(urlParams.has("project", "bf")) {
+            tf2cprimeTeam.style.display = 'none';
+            hl2dmceTeam.style.display = 'none';
+            bfTeam.style.display = 'block';
+            batarongOSTeam.style.display = 'none';
+        } else if(urlParams.has("project", "batarongos")) {
+            tf2cprimeTeam.style.display = 'none';
+            hl2dmceTeam.style.display = 'none';
+            bfTeam.style.display = 'none';
+            batarongOSTeam.style.display = 'block';
+        }
+
+        const loadEl = document.querySelector('#load');
+
+        const mainNavBarEl = document.querySelector("#justANavBar");
+        const loggedInNavBarEl = document.querySelector("#mainNavBar");
+
+        const welcomeTextEl = document.querySelector("#welcomeText");
+
+        const settingsDropDownEl = document.querySelector('#settingsDropDown');
+
+        settingsDropDownEl.style.display = 'none';
+
+        firebase.auth()
+          .getRedirectResult()
+          .then((result) => {
+            if (result.credential) {
+              /** @type {firebase.auth.OAuthCredential} */
+              var credential = result.credential;
+
+              // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+              var token = credential.accessToken;
+              // ...
+          }
+
+          // The signed-in user info.
+          var user = result.user;
+          // IdP data available in result.additionalUserInfo.profile.
+
+          if(user) {
+            window.location.href = "/";
+          }
+        }).catch((error) => {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/v8/firebase.User
+            var uid = user.uid;
+            var currentUser = firebase.auth().currentUser;
+            
+            mainNavBarEl.style.display = 'none';
+            loggedInNavBarEl.style.display = 'block';
+
+            welcomeTextEl.textContent = "Welcome, " + currentUser.displayName + "!";
+          } else {
+            // User is signed out
+            mainNavBarEl.style.display = 'block';
+            loggedInNavBarEl.style.display = 'none';
+          }
+        });
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          console.log(`Firebase SDK loaded with ${features.join(', ')}`);
+          loadEl.textContent = ``;
+
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, screenshot the developer console and report it to the devs!';
+        }
+
+        console.warn('*****Warning from The Aridity Team developers!!!!*****\n' +
+            'If you have seen this message, then you most likely have the Chrome Developer Tools on\n\n\n' +
+            'This warning message is for you:\n\n' +
+            'If a person that pretends to be apart of our developer/support team tells you to TYPE ANYTHING ON THIS WINDOW, then you were most likely getting scammed!\n' +
+            'We at the Aridity Team, do NOT recommend on getting/sending feedback about Aridity, batarongOS, Beta Fortress, Half-Life 2 Deathmatch: Community Edition or Team Fortress 2 Classic Prime on third-party websites!!\n' +
+            'OUR MAIN SOURCE OF SENDING FEEDBACKS IS THROUGH OUR DISCORD!!!! https://discord.gg/ACmtW8pM7B\n' +
+            'OR AT https://aridity-client.firebaseapp.com/support / https://aridity-client.firebaseapp.com/panorama_ui_framework?=supportPanel\n\n\n' +
+            'If you can, please send us the links of misleading informations. Thank you for the cooperation.'
+        );
+        console.warn('*****Warning from The Aridity Team developers!!!!*****\n' +
+            'If you have seen this message, then you most likely have the Chrome Developer Tools on\n\n\n' +
+            'This warning message is for you:\n\n' +
+            'If a person that pretends to be apart of our developer/support team tells you to TYPE ANYTHING ON THIS WINDOW, then you were most likely getting scammed!\n' +
+            'We at the Aridity Team, do NOT recommend on getting/sending feedback about Aridity, batarongOS, Beta Fortress, Half-Life 2 Deathmatch: Community Edition or Team Fortress 2 Classic Prime on third-party websites!!\n' +
+            'OUR MAIN SOURCE OF SENDING FEEDBACKS IS THROUGH OUR DISCORD!!!! https://discord.gg/ACmtW8pM7B\n' +
+            'OR AT https://aridity-client.firebaseapp.com/support / https://aridity-client.firebaseapp.com/panorama_ui_framework?=supportPanel\n\n\n' +
+            'If you can, please send us the links of misleading informations. Thank you for the cooperation.'
+        );
+      });
+
+      function showSettingsDropDown(visibility) {
+        const settingsDropDownEl = document.querySelector('#settingsDropDown');
+
+        if(visibility == true) {
+            settingsDropDownEl.style.display = 'block';
+        }
+        else {
+            settingsDropDownEl.style.display = 'none';
+        }
+      }
+    </script>
+  </body>
+</html>

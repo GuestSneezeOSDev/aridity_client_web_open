@@ -1,0 +1,23 @@
+Origin: batarongOS
+Label: batarong
+Suite: stable
+Codename: stable
+Version: 1.0
+Architectures: amd64 arm64 arm7 i386
+Components: main
+Description: software repo for batarongos
+Date: Sun, 25 Aug 2024 12:07:59 +0000
+
+MD5Sum:
+ ad99b292fdcbfc762952e704896380ad 423 dists/stable/main/binary-all/Packages
+ d41d8cd98f00b204e9800998ecf8427e 0 dists/stable/main/binary-amd64/Packages
+ 562e1c937bec26643b4e314bb3127c13 7762262 pool/main/b/betafortressclient/betafortressclient-7.0.0-all.deb
+SHA1:
+ 709ca01f93ddc60510d7af4a8ff8c1706afe5e28 423 dists/stable/main/binary-all/Packages
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 dists/stable/main/binary-amd64/Packages
+ c93b2beae86e2f107b25a234decb1e41bd1bf844 7762262 pool/main/b/betafortressclient/betafortressclient-7.0.0-all.deb
+SHA256:
+ f23eb0bf85ca0b2f3aeb05cad87644db37ac2ed8c7895aafc679ba591a7ec33e 423 dists/stable/main/binary-all/Packages
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 dists/stable/main/binary-amd64/Packages
+ b3cf8df759c867577deec5dd8b79f1af13ed6d83addbcae8647429e6e6f83af8 7762262 pool/main/b/betafortressclient/betafortressclient-7.0.0-all.deb
+

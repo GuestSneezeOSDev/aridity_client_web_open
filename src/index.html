@@ -1,0 +1,1316 @@
+<!-- Copyright (c) 2024 The Aridity Team, All rights reserved -->
+<html>
+<head>
+  <title>Aridity</title>
+  <link rel="stylesheet" href="/panorama-styles.css">
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- uncomment to enable firebase
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.5/firebase-remote-config-compat.js"></script>
+  <script defer src="/firebase.js?useEmulator=true"></script> -->
+</head>
+<body class="applyBetterBackground">
+  <div id="loaderContainer">
+    <div id="loaderContent">
+        <h1>Aridity is loading...</h1>
+        <div id="loader"></div>
+    </div>
+    <div id="clickToEnterContent" style="display: none; color: white;">
+        <div id="clickToEnterBtn">
+            <h1 style="font-family: 'Stratum 2 Bold';">Click anywhere to enter...</h1>
+        </div>
+    </div>
+  </div>
+
+  <div class="statusContainer" id="statusContainer">
+    <p id="load">hi betch</p>
+  </div>
+
+  <div id="popup" class="popup">
+    <div id="guh">
+      <div class="popup-header-content popup-border">
+        <h3 id="msgBoxTitle">Developing Purposes</h2>
+      </div> 
+      <div class="popup-content popup-border">
+        <p id="msgBoxText">This is a (bad) replica of the CS:GO message box.</p>
+        <div id="msgBoxBtnContent">
+          <button class="msgBoxButton" id="msgBoxBtn1">This is a button</button>
+          <button class="msgBoxButton" id="msgBoxBtn2">Dear god</button>
+          <button class="msgBoxButton" id="msgBoxBtn3">There's more</button>
+          <button class="msgBoxButton" id="msgBoxBtn4">Noooo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="left-panel">
+    <button class="menuButton" id="homeBtn1" onclick="closeAllPanels();">
+      <img src="/assets/aridity-logo-no-bg.svg" alt="Button 1" style="width: 5em; height: 5em; position: absolute; top: 2%; left: 7%; transition: none; filter: none;"></img>
+    </button>
+	  <div class="line"></div>
+    <button class="menuButton" id="homeBtn2" onclick="closeAllPanels();">
+      <img src="/assets/home.svg" alt="Button 2" style="width: 4em; height: 4em; position: absolute; top: 14%; left: 11%;"></img>
+    </button>
+	  <button class="menuButton" id="storeBtn" onclick="showStorePanel();">
+      <img src="/assets/store.svg" alt="Button 3" style="position: absolute; top: 23%; left: 22%;"></img>
+    </button>
+	  <button class="menuButton" id="libraryBtn" onclick="showLibraryPanel();">
+      <img src="/assets/library.svg" alt="Button 4" style="position: absolute; top: 30%; left: 22%;"></img>
+    </button>
+	  <button class="menuButton" id="teamBtn" onclick="showTeamPanel();">
+      <img src="/assets/team.svg" alt="Aridity Team" style="position: absolute; top: 36.8%; left: 22%;"></img>
+    </button>
+	  <button class="menuButton" id="settingsBtn">
+        <img src="/assets/settings.svg" alt="Button 5" style="position: absolute; top: 44%; left: 22%;"></img>
+      </button>
+  </div>
+
+  <div class="panelContainer moz-panorama-scrollbar" id="userPanel" 
+  style="
+  padding: 5px;
+  margin: 2% auto;
+  margin-left: 100px;
+  width: 500px;
+  font-family: 'Stratum 2 Bold';
+  ">
+    <h2 id="welcomeText">Welcome back, user!</h2>
+    <p id="descriptionOrWhateverText"></p>
+    <button class="btn" id="showLogInPanelBtn"
+    onclick="showExistingPanel('loginPanel');">Log in</button>
+    <br> <br>
+  </div>
+
+  <div class="panelContainer moz-panorama-scrollbar" id="newsPanel" 
+  style="
+  padding: 5px;
+  margin: 2% auto;
+  margin-left: 100px;
+  width: 500px;
+  font-family: 'Stratum 2 Bold';
+  ">
+    <h4 style="margin: 5px auto; margin-left: 10px;">News</h4>
+    <iframe id="newsView" src="news/index.html"
+    style="
+    width: 99%;
+    margin: -1% auto;
+    height: 400px;
+    border: none;
+    "></iframe>
+    <br> <br>
+  </div>
+
+  <div class="loginContainer panelContainer moz-panorama-scrollbar" id="loginPanel">
+    <br>
+    <span class="close" id="settingsCloseIcon"
+    onclick="closeExistingPanel('loginPanel');">&times;</span>
+    <h1>Welcome back to Aridity</h1>
+    <p>
+        Please log in with your credentials.<br> <br>
+        If you have forgotten your password, please contact us through Discord or email (aridityteam@gmail.com)<br>
+        (The given password reset link will expire after 5 hours)
+    </p>
+    <p>
+        Otherwise,
+    </p>
+    <button class="btn" id="logInWithGitHubBtn" onclick="logInToUser(true);">Log in with GitHub</button> <br> <br> <br>
+    <p>Enter your credentials here</p>
+    <label>Email address</label>
+    <input type="email" id="emailInput" placeholder="Enter your email address" class="input"
+    style="width: 350px;"><br> <br>
+    <label>Password</label>
+    <input type="password" id="passwordInput" placeholder="Enter your password" class="input"
+    style="width: 380px;">
+    <br> <br>
+    <button class="btn" id="logInToAccBtn" onclick="logInToUser(false);">Log in</button> <br>
+    <p>
+        Don't have an account?
+    </p><br>
+    <button class="btn" id="redirectToCreateAccPageBtn"
+    onclick="closeExistingPanel('loginPanel'); showExistingPanel('createAccPanel');">Create one here</button>
+    <br>
+  </div>
+  <div class="loginContainer panelContainer" id="createAccPanel">
+    <br>
+    <span class="close" id="settingsCloseIcon"
+    onclick="closeExistingPanel('createAccPanel');">&times;</span>
+    <h1>Welcome to Aridity</h1>
+    <p>
+        Create an account with your credentials.<br> <br>
+        If you have forgotten your password, please contact us through Discord or email (aridityteam@gmail.com)<br>
+        (The given password reset link will expire after 5 hours)
+    </p>
+    <p>
+        Otherwise,
+    </p>
+    <button class="btn" id="logInWithGitHubBtn" onclick="createUser(true);">Create with GitHub</button> <br> <br> <br>
+    <p>Enter your credentials here</p>
+    <label>Display name</label>
+    <input type="text" id="displayNameInput" placeholder="Enter your display name" class="input"
+    style="width: 355px;"><br> <br>
+    <label>Email address</label>
+    <input type="email" id="newEmailInput" placeholder="Enter your email address" class="input"
+    style="width: 350px;"><br> <br>
+    <label>Password</label>
+    <input type="password" id="newPasswordInput" placeholder="Enter your password" class="input"
+    style="width: 380px;">
+    <br> <br>
+    <button class="btn" id="createAccBtn" onclick="createUser(false);">Create</button> <br>
+    <p>
+        Already have an existing account?
+    </p><br>
+    <button class="btn" id="redirectToLoginPageBtn"
+    onclick="closeExistingPanel('createAccPanel'); showExistingPanel('loginPanel');">Log in here</button>
+    <br>
+  </div>
+  <div class="loginContainer panelContainer" id="resetPasswordPanel">
+    <br>
+    <span class="close" id="settingsCloseIcon"
+    onclick="closeExistingPanel('resetPasswordPanel');">&times;</span>
+    <h1>Welcome back to Aridity</h1>
+    <p>
+        You have been sent here to change an account's password
+    </p>
+    <p>Enter your credentials here</p>
+    <label>Password</label>
+    <input type="password" id="passwordResetInput" placeholder="Enter your password" class="input"
+    style="width: 380px;">
+    <br> <br>
+    <button class="btn" id="resetPasswordBtn" onclick="resetPass();">Reset password</button> <br>
+    <br>
+  </div>
+
+  <div class="store panelContainer moz-panorama-scrollbar" id="storePanel">
+    <br>
+
+    <span class="close" id="storeCloseIcon" onclick="closeExistingPanel('storePanel');">&times;</span>
+    <h1>Store</h1>
+    <div id="products" style="overflow-y:scroll; max-height:46rem; display: grid; padding-bottom: 1rem;">
+
+    </div>
+    <br>
+    <button class="btn" id="closeStoreBtn" onclick="closeExistingPanel('storePanel');">Close</button>
+    <br>
+  </div>
+
+  <div class="settings panelContainer moz-panorama-scrollbar" id="settingsPanel">
+    <br>
+    <span class="close" id="settingsCloseIcon" onclick="closeExistingPanel('settingsPanel');">&times;</span>
+    <div class="tabControl" id="settingsTabControl">
+      <div id="tabControlNav">
+        <button class="tabControlItem" onclick="setSettingsTabIndex(1);">General</button>
+        <button class="tabControlItem" onclick="setSettingsTabIndex(2);">Account</button>
+        <button class="tabControlItem" onclick="setSettingsTabIndex(3);">Developer stuf</button>
+      </div>
+      <div id="generalTab">
+        <br>
+        <h1>General</h1>
+
+        <h2>News</h2>
+        <h3>Sort by</h3>
+        <label>Team Fortress 2 Classic Prime</label>
+        <input type="checkbox" id="sortByProjectTF2CP" checked> <br>
+        <label>Beta Fortress</label>
+        <input type="checkbox" id="sortByProjectBF" checked> <br>
+        <label>Half-Life 2 Deathmatch: Community Edition</label>
+        <input type="checkbox" id="sortByProjectHL2DMCE" checked> <br>
+        <label>batarongOS</label>
+        <input type="checkbox" id="sortByProjectBatarongOS" checked> <br>
+        <label>Aridity / Website</label>
+        <input type="checkbox" id="sortByProjectAridSite" checked> <br>
+
+        <h2>Audio</h2>
+        <label>Music</label> 
+        <input type="checkbox" id="checkBoxMusic" checked/> <br>
+        <br><br>
+      </div>
+      <div id="accountTab">
+        <br>
+        <h1>Account</h1>
+        <button class="btn" id="logOutBtn">Log out</button>
+        <br><br>
+      </div>
+      <div id="developerTab">
+        <br>
+        <h1>Developer stuf</h1>
+        <h3>Panorama (fake) UI playground</h3>
+        <h4>MessageBox</h4>
+        <label for="pUIPGMsgBoxTitleInput">Message Box title</label>
+        <input class="input" type="text" id="pUIPGMsgBoxTitleInput" placeholder="Type in the title for your MessageBox to show"/> <br>
+        <label for="pUIPGMsgBoxTextInput">Message Box text</label>
+        <input class="input" type="text" id="pUIPGMsgBoxTextInput" placeholder="Type in the text content for your MessageBox to show"/> <br>
+        <label for="pUIPGMsgBoxBtn1TextInput">Message Box Button 1 text</label>
+        <input class="input" type="text" id="pUIPGMsgBoxBtn1Input" placeholder="Type in the text for your MessageBox's first button to show"/> <br>
+        <label for="pUIPGMsgBoxBtn2TextInput">Message Box Button 2 text</label>
+        <input class="input" type="text" id="pUIPGMsgBoxBtn2Input" placeholder="Type in the text for your MessageBox's second button to show"/> <br>
+        <br>
+        <button class="btn" 
+        onclick="showTestMsgBox();">Show message box</button>
+        <br> <br>
+      </div>
+      <button class="btn" id="saveBtn" onclick="saveSettings();">Save changes</button>
+      <button class="btn" id="closeSettingsBtn" onclick="closeExistingPanel('settingsPanel');">Close</button>
+      <br>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="team_members_stuff.css"/>
+
+  <div class="team panelContainer moz-panorama-scrollbar" id="teamPanel">
+    <br> 
+    <span class="close" id="settingsCloseIcon" onclick="closeExistingPanel('teamPanel');">&times;</span>
+    <div id="teamMainPage">
+      <h1>The <span style="color: aqua;">Aridity</span> Team</h1>
+      <p>
+        The <span style="color: aqua;">Aridity</span> Team is a group/team (hence the name) of developers who mainly develops in .NET (VB and C#) or C++. We also develop games based on the Source engine... i guess<br><br>
+
+        We also make projects like <span style="color: rgb(199, 109, 24);">Team Fortress 2 Classic Prime</span>, <span style="color: rgb(180, 177, 8);">Beta Fortress</span>, <span style="color: rgb(206, 203, 30);">batarongOS</span> and <span style="color: rgb(218, 198, 23);">Half-Life 2 Deathmatch: Community Edition</span>!
+        
+        <h4>Here are the links to specific "The <span style="color: aqua;">Aridity</span> Team" pages</h4>
+        <button class="btn" id="teamMembersBtn" onclick="setTeamPanelTabIndex(2);">The team members</button>
+        <button class="btn" id="ourProjectsBtn" onclick="setTeamPanelTabIndex(3);">The Aridity Team Projects</button>
+      </p>
+    </div>
+    <div id="teamMembersPage" class="teamMembersContainer">
+      <button class="btn" id="backToMainTeamPageBtn"
+      onclick="setTeamPanelTabIndex(1);">Back to main page</button>
+      <div style="overflow-y:scroll; max-height: 90%;">
+        <p>note that the other members will included in this page soon</p>
+            <section>
+                <div id="tf2cPrimeTeamMembersAndContributors">
+                    <h2><span style="color: rgb(199, 109, 24);">Team Fortress 2 Classic Prime</span> Team</h2>
+                    <h3>Developers (actual)</h3>
+                    <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                        style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="twilightbob">
+                            <p>
+                                <img src="../../assets/team_members/twilightbob.png"> <br>
+                                <span style="font-weight: bolder;">TwilightBob</span><br>
+                                Lead developer, animator, level designer & programmer<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199090200486">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/TwilightBob">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;"  
+                        id="bigbeef">
+                            <p>
+                                <img src="../../assets/team_members/big_beef.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">Big Beef</span><br>
+                                Lead developer, Level designer, texture artist, animator<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UClRI4qbtzdVYwqtxU6EifVw">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/whyareyouhereareyououtofyourmind/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/bvvth556epic">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <h3>Contributors</h3>
+                    <div class="d-flex align-items-center justify-content-center" 
+                        style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;"  
+                        id="practicemedicine">
+                            <p>
+                                <img src="../../assets/team_members/practicemedicine.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                                Helped with the Coplay implementation<br>
+                                <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;"  
+                        id="grub_pl">
+                            <p>
+                                <img src="../../assets/team_members/grub_pl.png"> <br>
+                                <span style="font-weight: bolder;">Grub PL</span><br>
+                                Playtester, level designer, bucket icon artist<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/GrubPLPL">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/GrubPL">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="notop">
+                            <p>
+                                <img src="../../assets/team_members/nobitches.png"> <br>
+                                <span style="font-weight: bolder;">NoTop/RusBaton</span><br>
+                                Playtester, provided the HD version of the 2014 TF2Classic logo<br>
+                                <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199106187025">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/RusBaton">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="hl2DMCETeamMembersAndContributors">
+                    <h2><span style="color: rgb(226, 194, 12);">Half-Life 2 Deathmatch: Community Edition</span> Team</h2>
+                    <h3>Developers (actual)</h3>
+                    <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                        style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="practicemedicine">
+                            <p>
+                                <img src="../../assets/team_members/practicemedicine.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                                Lead developer, programmer & level designer<br>
+                                <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="twilightbob">
+                            <p>
+                                <img src="../../assets/team_members/twilightbob.png"> <br>
+                                <span style="font-weight: bolder;">TwilightBob</span><br>
+                                Modeller, level designer & programmer<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199090200486">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/TwilightBob">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="bigbeef">
+                            <p>
+                                <img src="../../assets/team_members/big_beef.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">Big Beef</span><br>
+                                Level designer<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UClRI4qbtzdVYwqtxU6EifVw">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/whyareyouhereareyououtofyourmind/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/bvvth556epic">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="yourlocalmoon">
+                            <p>
+                                <img src="../../assets/team_members/yourlocalmoon.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">YourLocalMoon</span><br>
+                                Programmer<br>
+                                <br>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="universebreaker">
+                            <p>
+                                <img src="../../assets/team_members/universebreaker.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">nico/universebreaker/coffee table fox</span><br>
+                                Level designer & Animator (only on SFM sadge)<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCbRQzbaPKoz47TAN7sUSheA">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199507821217">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/universe-breaker">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="bfTeamMembersAndContributors">
+                    <h2><span style="color: rgb(192, 192, 9);">Beta Fortress</span> Team</h2>
+                    <h3>Developers (actual)</h3>
+                    <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                        style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="twilightbob">
+                            <p>
+                                <img src="../../assets/team_members/twilightbob.png"> <br>
+                                <span style="font-weight: bolder;">TwilightBob</span><br>
+                                Lead developer, modeller, level designer & programmer<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/profiles/76561199090200486">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/TwilightBob">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="mrmalos">
+                            <p>
+                                <img src="../../assets/team_members/mrmalos.png"> <br>
+                                <span style="font-weight: bolder;">Mr. Malos</span><br>
+                                Former lead developer, texture artist<br> <br> <br> <br>           
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="bigbeef">
+                            <p>
+                                <img src="../../assets/team_members/big_beef.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">Big Beef</span><br>
+                                Level designer, texture artist & scripter<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UClRI4qbtzdVYwqtxU6EifVw">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/whyareyouhereareyououtofyourmind/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/bvvth556epic">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="practicemedicine">
+                            <p>
+                                <img src="../../assets/team_members/practicemedicine.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                                Programmer<br>
+                                <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <h3>Contributors</h3>
+                    <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                    style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="grub_pl">
+                            <p>
+                                <img src="../../assets/team_members/grub_pl.png"> <br>
+                                <span style="font-weight: bolder;">Grub PL</span><br>
+                                Provided map information images for ad_dustbowl2, Playtester <br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCY11AKXYbv8Ha7ip7ZVJj7g">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/GrubPLPL">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/GrubPL">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="soviet_hoovy">
+                            <p>
+                                <img src="../../assets/team_members/annoyinghoovy.png"> <br>
+                                <span style="font-weight: bolder;">Soviet Hoovy</span><br>
+                                Level designer, Our personal anger motivator<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UC18L9j7Fio8ItYNSvApgpmw">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/bostonmilkdealer/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/SovietHoovy">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="batarongOSTeamMembersAndContributors">
+                    <h2><span style="color: yellow;">batarongOS</span> Team</h2>
+                    <h3>Developers (actual)</h3>
+                    <div class="d-flex align-items-center justify-content-center flex-wrap" 
+                        style="overflow-y:scroll; max-height:45rem; display: grid; padding-bottom: 1rem;">
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="practicemedicine">
+                            <p>
+                                <img src="../../assets/team_members/practicemedicine.png"
+                                style="object-fit: cover;"> <br>
+                                <span style="font-weight: bolder;">PracticeMedicine</span><br>
+                                Lead developer & "archiso" configuration guy<br>
+                                <a class="socialLinks" href="https://www.youtube.com/@PracticeMedicine">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/PracticeMedicineSecondComing/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/PracticeMedicine03">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="rilabug">
+                            <p>
+                                <img src="../../assets/team_members/rilabug.png"> <br>
+                                <span style="font-weight: bolder;">Rilabug</span><br>
+                                Lead developer, Plymouth theme developer, publisher<br>
+                                <a class="socialLinks" href="https://www.youtube.com/channel/UCoje_x855Z4VWa7u2zXns7Q">
+                                    <img src="../../assets/social_platforms/youtube-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://www.twitch.tv/bluspyj4g">
+                                    <img src="../../assets/social_platforms/twitch-icon.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://steamcommunity.com/id/Rilabug/">
+                                    <img src="../../assets/social_platforms/steam-logo.png"/>
+                                </a>
+                                <a class="socialLinks" href="https://github.com/Rilabug">
+                                    <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                            </p>
+                        </div>
+                        <div 
+                        class="col pt-4 pb-2 teamMember mx-auto align-items-center justify-content-center" 
+                        style="display: grid;" 
+                        id="timmy">
+                            <p>
+                                <img src="../../assets/team_members/timmeh.png"> <br>
+                                <span style="font-weight: bolder;">Timmy</span> <br>
+                                The "customization" guy<br>
+                                <a class="socialLinks" href="https://github.com/lolimjustherefornoreason">
+                                <img src="../../assets/social_platforms/github-logo.png"/>
+                                </a>
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+      </div>
+    </div>
+    <div id="teamProjectsPage">
+      <button class="btn" id="backToMainTeamPageBtn"
+      onclick="setTeamPanelTabIndex(1);">Back to main page</button>
+      <h1>Coming soon...</h1>
+      <p>Page coming soon</p>
+    </div>
+    <br>
+  </div>
+
+  <div class="MainMenuNotification" id="notification">
+    <div id="notificationContent" class="NotificationBlue">
+        <p id="notificationText">weep</p>
+    </div>
+  </div>
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  <model-viewer src="/assets/heavy5.glb" autoplay camera-orbit="0deg 50deg 250%" field-of-view="10deg" tone-mapping="aces" shadow-intensity="2" shadow-softness="0"> </model-viewer>
+
+  <script src="../panorama-ui-script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+  <script src="globalvars.js"></script>
+
+  <script>
+    loaderSupported = true;
+
+    if(loaderSupported != true) {
+        var loaderContainerEl = document.querySelector('#loaderContainer');
+        loaderContainerEl.style.display = 'none';
+    }
+
+    var audio = new Audio('/assets/sound/bg_Music.mp3');
+    var musicCheckBox = document.querySelector('#checkBoxMusic');
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var loaderContentEl = document.querySelector('#loaderContent');
+        var clickToEnterContentEl = document.querySelector('#clickToEnterContent');
+
+        loaderContentEl.style.display = 'block';
+        clickToEnterContentEl.style.display = 'none';
+
+        const queryString = window.location.search;
+	    console.log("current queryString is: " + queryString);
+
+	    const urlParams = new URLSearchParams(queryString);
+
+        const statusContainerEl = document.querySelector('#statusContainer')
+        const loadEl = document.querySelector('#load');
+
+        const welcomeTextEl = document.querySelector('#welcomeText');
+
+        const loginPanelEl = document.querySelector('#loginPanel');
+        const showLogInPanelBtnEl = document.querySelector('#showLogInPanelBtn');
+
+        const resetPasswordPanelEl = document.querySelector('#resetPasswordPanel');
+
+        const createAccPanelEl = document.querySelector('#createAccPanel');
+
+        loginPanelEl.style.display = 'none';
+        teamPanel.style.display = 'none';
+        resetPasswordPanelEl.style.display = 'none';
+        createAccPanelEl.style.display = 'none';
+
+        if(urlParams.has('', 'settingsPanel')) {
+            showSettingsPanel();
+        } else if (urlParams.has('', 'loginPanel')) {
+            showExistingPanel('loginPanel');
+        } else if (urlParams.has('', 'teamPanel')) {
+            showTeamPanel();
+        } else if (urlParams.has('', 'storePanel')) {
+            showStorePanel();
+        } 
+        else if (urlParams.has('', 'supportPanel')) {
+            showMsgBox('Work in progress...', 'The "support" panel is currently in work-in-progress',
+                "OK", null, null, null,
+                () => {
+                    closeExistingMsgBox();
+                }, null, null, null
+            );
+        }
+
+        // menu buttons
+        const homeBtn1El = document.querySelector('#homeBtn1');
+        const homeBtn2El = document.querySelector('#homeBtn2');
+        const storeBtnEl = document.querySelector('#storeBtn');
+        const libraryBtnEl = document.querySelector('#libraryBtn');
+        const teamBtnEl = document.querySelector('#teamBtn');
+        const settingsBtnEl = document.querySelector('#settingsBtn');
+
+        homeBtn1El.addEventListener('mouseover', () => {
+            var mouseoverAudio = new Audio('/assets/sound/ui/mainmenu_rollover_01.wav');
+            mouseoverAudio.play();
+        });
+        homeBtn2El.addEventListener('mouseover', () => {
+            var mouseoverAudio = new Audio('/assets/sound/ui/mainmenu_rollover_01.wav');
+            mouseoverAudio.play();
+        });
+        storeBtnEl.addEventListener('mouseover', () => {
+            var mouseoverAudio = new Audio('/assets/sound/ui/mainmenu_rollover_01.wav');
+            mouseoverAudio.play();
+        });
+        libraryBtnEl.addEventListener('mouseover', () => {
+            var mouseoverAudio = new Audio('/assets/sound/ui/mainmenu_rollover_01.wav');
+            mouseoverAudio.play();
+        });
+        teamBtnEl.addEventListener('mouseover', () => {
+            var mouseoverAudio = new Audio('/assets/sound/ui/mainmenu_rollover_01.wav');
+            mouseoverAudio.play();
+        });
+        settingsBtnEl.addEventListener('mouseover', () => {
+            var mouseoverAudio = new Audio('/assets/sound/ui/mainmenu_rollover_01.wav');
+            mouseoverAudio.play();
+        });
+
+        homeBtn1El.addEventListener('click', () => {
+            var clickAudio = new Audio('/assets/sound/ui/mainmenu_press_home_01.wav');
+            clickAudio.play();
+        });
+        homeBtn2El.addEventListener('click', () => {
+            var clickAudio = new Audio('/assets/sound/ui/mainmenu_press_home_01.wav');
+            clickAudio.play();
+        });
+        storeBtnEl.addEventListener('click', () => {
+            var clickAudio = new Audio('/assets/sound/ui/mainmenu_press_quit_02.wav');
+            clickAudio.play();
+        });
+        libraryBtnEl.addEventListener('click', () => {
+            var clickAudio = new Audio('/assets/sound/ui/mainmenu_press_inventory_02.wav');
+            clickAudio.play();
+        });
+        teamBtnEl.addEventListener('click', () => {
+            var clickAudio = new Audio('/assets/sound/ui/mainmenu_press_watch_02.wav');
+            clickAudio.play();
+        });
+        settingsBtnEl.addEventListener('click', () => {
+            var clickAudio = new Audio('/assets/sound/ui/mainmenu_press_settings_02.wav');
+            clickAudio.play();
+        });
+
+
+        // in case if u were brought here by the reset password or verify email message
+        /*
+        UNCOMMENT IF YOU HAVE FIREBASE ENABLED!!
+
+        var mode = urlParams.get('mode');
+        var actionCode = urlParams.get('oobCode');
+        var continueUrl = urlParams.get('continueUrl');
+        var lang = urlParams.get('lang') || 'en';
+
+        // Handle the user management action.
+        switch (mode) {
+            case 'resetPassword':
+                // Display reset password handler and UI.
+                handleResetPassword(firebase.auth(), actionCode, continueUrl, lang);
+                break;
+            case 'recoverEmail':
+                // Display email recovery handler and UI.
+                //handleRecoverEmail(firebase.auth(), actionCode, lang);
+                showMsgBox('Unknown user management action', "Email recovery isn't supported by Aridity Green Bird",
+                    "OK", null, null, null,
+                    () => {
+                        closeExistingMsgBox();
+                    }, null, null, null
+                );
+                break;
+            case 'verifyEmail':
+                // Display email verification handler and UI.
+                handleVerifyEmail(firebase.auth(), actionCode, continueUrl, lang);
+                break;
+            default:
+                // Error: invalid mode.
+        }
+  
+        async function handleResetPassword(auth, actionCode, continueUrl, lang) {
+            // Localize the UI to the selected language as determined by the lang
+            // parameter.
+
+            // Verify the password reset code is valid.
+            await auth.verifyPasswordResetCode(actionCode).then((email) => {
+                var accountEmail = email;
+
+                showExistingPanel('resetPasswordPanel');
+
+                const passwordInputEl = document.querySelector('#passwordResetInput');
+                var newPassword = passwordInputEl.value;
+
+                const resetPasswordBtnEl = document.querySelector('#resetPasswordBtn');
+                resetPasswordBtnEl.addEventListener('click', () => {
+                    // Save the new password.
+                    auth.confirmPasswordReset(actionCode, newPassword).then( async(resp) => {
+                        // Password reset has been confirmed and new password updated.
+                        showMsgBox('Password Reset', 
+                            "Your account's password has been successfully changed to a new password.", 
+                            'LOG IN TO ACCOUNT', 'CANCEL', null, null,
+                            async() => {
+                                await auth.signInWithEmailAndPassword(accountEmail, newPassword);
+                                closeExistingMsgBox();
+                                window.location.reload();
+                            }, () => { closeExistingMsgBox(); }
+                        );
+                    }).catch((error) => {
+                        // Error occurred during confirmation. The code might have expired or the
+                        // password is too weak.
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+
+                        showMsgBox('Password reset failed!', 'Failed to change password: ' + errorMessage, 
+                            'OK', null, null, null,
+                            () => {
+                                closeExistingMsgBox();
+                            }, null, null, null
+                        );
+                    });
+                });
+            }).catch((error) => {
+                // Invalid or expired action code. Ask user to try to reset the password
+                // again.
+            });
+        }
+
+        function handleVerifyEmail(auth, actionCode, continueUrl, lang) {
+            // Localize the UI to the selected language as determined by the lang
+            // parameter.
+            // Try to apply the email verification code.
+            auth.applyActionCode(actionCode).then((resp) => {
+                // Email address has been verified.
+                showMsgBox('Account email verification', "Your account's email has been successfully verified!", 
+                            'OK', null, null, null,
+                            () => {
+                                closeExistingMsgBox();
+                                window.location.reload();
+                            }, null, null, null
+                );
+            }).catch((error) => {
+                // Code is invalid or expired. Ask the user to verify their email address
+                // again.
+            });
+        }
+
+        firebase.auth()
+          .getRedirectResult()
+          .then((result) => {
+            if (result.credential) {
+              // @type {firebase.auth.OAuthCredential} 
+              var credential = result.credential;
+
+              // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+              var token = credential.accessToken;
+              // ...
+          }
+
+          // The signed-in user info.
+          var user = result.user;
+          // IdP data available in result.additionalUserInfo.profile.
+
+          if(user) {
+            window.location.href = "/";
+          }
+        }).catch((error) => {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+            showMainMenuNotification('Checking if user is logged in', 'blue');
+
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/v8/firebase.User
+            var uid = user.uid;
+            var currentUser = firebase.auth().currentUser;
+
+            welcomeTextEl.textContent = "Welcome, " + currentUser.displayName + "!";
+            showLogInPanelBtnEl.style.display = 'none';
+
+            closeExistingMainMenuNotification();
+          } else {
+            // User is signed out
+            welcomeTextEl.textContent = "You are logged out, please log in"
+            libraryBtnEl.style.display = 'none';
+            settingsBtnEl.style.display = 'none';
+            showLogInPanelBtnEl.style.display = 'block';
+
+            closeExistingMainMenuNotification();
+          }
+        });
+
+        const fetchStoreProducts = firebase.database().ref("products/");
+        console.log(fetchStoreProducts);
+
+        fetchStoreProducts.on("child_added", function (snapshot) {
+          const products = snapshot.val();
+          const product = `
+            <div class="app" id=${
+            products.productHandle
+            }>
+              <h1>${products.productName}</h1>
+              <section>
+                <h4>Description</h4>
+                <p>${products.description}</p>
+                <h4>More info</h4>
+                <p>Is distributed on third-party websites: ${products.productIsThirdPartyDistribution}</p>
+              </section> <br>
+              <button class="btn" onclick="redirectTo('${products.productDistributionLink}')">Download ${products.productName}</button>
+              <br> <br>
+            </div>
+            <hr>
+            `;
+            
+            //document.getElementById("products").innerHTML += product;
+            document.querySelector('#products').innerHTML += product;
+        });
+
+        try {
+            showMainMenuNotification('Loading Firebase SDK', 'yellow');
+
+            let app = firebase.app();
+            let features = [
+                'auth', 
+                'database', 
+                'firestore',
+                'functions',
+                'messaging', 
+                'storage', 
+                'analytics', 
+                'remoteConfig',
+                'performance',
+            ].filter(feature => typeof app[feature] === 'function');
+            console.log(`Firebase SDK loaded with ${features.join(', ')}`);
+            loadEl.textContent = ``;
+            closeExistingMainMenuNotification();
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, screenshot the developer console and report it to the devs!';
+          showMainMenuNotification('Error loading the Firebase SDK, screenshot the developer console and report it to the devs!', 'red', false);
+        }*/
+
+        console.warn('*****Warning from The Aridity Team developers!!!!*****\n' +
+            'If you have seen this message, then you most likely have the Chrome Developer Tools on\n\n\n' +
+            'This warning message is for you:\n\n' +
+            'If a person that pretends to be apart of our developer/support team tells you to TYPE ANYTHING ON THIS WINDOW, then you were most likely getting scammed!\n' +
+            'We at the Aridity Team, do NOT recommend on getting/sending feedback about Aridity, batarongOS, Beta Fortress, Half-Life 2 Deathmatch: Community Edition or Team Fortress 2 Classic Prime on third-party websites!!\n' +
+            'OUR MAIN SOURCE OF SENDING FEEDBACKS IS THROUGH OUR DISCORD!!!! https://discord.gg/ACmtW8pM7B\n' +
+            'OR AT https://aridity-client.firebaseapp.com/support / https://aridity-client.firebaseapp.com/panorama_ui_framework?=supportPanel\n\n\n' +
+            'If you can, please send us the links of misleading informations. Thank you for the cooperation.'
+        );
+        console.warn('*****Warning from The Aridity Team developers!!!!*****\n' +
+            'If you have seen this message, then you most likely have the Chrome Developer Tools on\n\n\n' +
+            'This warning message is for you:\n\n' +
+            'If a person that pretends to be apart of our developer/support team tells you to TYPE ANYTHING ON THIS WINDOW, then you were most likely getting scammed!\n' +
+            'We at the Aridity Team, do NOT recommend on getting/sending feedback about Aridity, batarongOS, Beta Fortress, Half-Life 2 Deathmatch: Community Edition or Team Fortress 2 Classic Prime on third-party websites!!\n' +
+            'OUR MAIN SOURCE OF SENDING FEEDBACKS IS THROUGH OUR DISCORD!!!! https://discord.gg/ACmtW8pM7B\n' +
+            'OR AT https://aridity-client.firebaseapp.com/support / https://aridity-client.firebaseapp.com/panorama_ui_framework?=supportPanel\n\n\n' +
+            'If you can, please send us the links of misleading informations. Thank you for the cooperation.'
+        );
+
+        closeAllPanels();
+
+        if(loaderSupported) {
+            var loaderContainerEl = document.querySelector('#loaderContainer');
+            loaderContentEl.style.display = 'none';
+            clickToEnterContentEl.style.display = 'block';
+            
+            var clickToEnterBtnEl = document.querySelector('#clickToEnterBtn');
+            clickToEnterBtnEl.addEventListener('click', () => {
+                loaderContainerEl.classList.add('closeAnim');
+
+                audio.loop = true;
+                audio.play();
+
+                showMsgBox('AridWeb Open-Source', 
+                `
+                This project is based off an open-source derivative of the Aridity Website.
+                Report any issues or suggest anything in our GitHub discussions/issues or on Discord.
+                Visit https://aridity-client.firebaseapp.com?=openSourcePanel for more info.
+                `, 'OK', 'MORE INFO', null, null,
+                () => {
+                    closeExistingMsgBox();
+                },
+                () => {
+                    window.location.href = 'https://aridity-client.firebaseapp.com?=openSourcePanel';
+                    closeExistingMsgBox();
+                });
+
+                if(urlParams.has('', '404Msg')) {
+                    urlParams.delete('', '404Msg');
+
+                    showMsgBox('Redirected', 'You have been redirected here because the page you are looking for does not exist.', 'OK', null, null, null,
+                    () => closeExistingMsgBox(), null, null, null);
+                }
+            });
+        }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+        // Check if the tab is no longer active
+        if (document.visibilityState === 'hidden') {
+            // Pause the audio
+            audio.pause();
+        } else {
+            // Resume the audio if the tab is active again
+            audio.play();
+        }
+    });
+
+    async function updateNewsSortBys() {
+      const checkBoxSortByBF = document.querySelector('#sortByProjectBF');
+      const checkBoxSortByBatarongOS = document.querySelector('#sortByProjectBatarongOS');
+      const checkBoxSortByTF2CP = document.querySelector('#sortByProjectTF2CP');
+      const checkBoxSortByHL2DMCE = document.querySelector('#sortByProjectHL2DMCE');
+      const checkBoxSortByAridity = document.querySelector('#sortByProjectAridSite');
+
+      sortByBatarongOs = checkBoxSortByBatarongOS.checked;
+      sortByBF = checkBoxSortByBF.checked;
+      sortByTF2CP = checkBoxSortByTF2CP.checked;
+      sortByHL2DMCE = checkBoxSortByHL2DMCE.checked;
+      sortByAridity = checkBoxSortByAridity.checked;
+    }
+    async function saveSettings() {
+      const newsWebViewEl = document.querySelector('#newsView');
+
+      await updateNewsSortBys();
+
+      await newsWebViewEl.contentWindow.location.reload();
+
+      if(musicCheckBox.checked != true) {
+        if(!audio.paused) {
+            audio.pause();
+        }
+      } else {
+        if(audio.pause) {
+            audio.play();
+        }
+      }
+    }
+
+    function showStorePanel() {
+        closeAllPanels();
+        showExistingPanel('storePanel');
+    }
+    function showLibraryPanel() {
+        closeAllPanels();
+        showMsgBox('Work in progress...', 'The "library" panel is currently in work-in-progress',
+            'OK', null, null, null,
+            () => {
+                closeExistingMsgBox();
+            }, null, null, null
+        );
+    }
+  
+    const teamPanel = document.querySelector('#teamPanel');
+    function showTeamPanel() {
+        /*
+        showMsgBox('Work in progress...', 'The "Aridity Team" panel is currently in work-in-progress',
+            'OK', null, null, null,
+            () => {
+            closeExistingMsgBox();
+            }, null, null, null
+        );
+        */
+        closeAllPanels();
+        teamPanel.classList.remove('closeAnim');
+
+        if(teamPanel.style.display == 'none') {
+            // settings tabs
+            const teamMainTab = document.querySelector('#teamMainPage');
+            const teamMembersTab = document.querySelector('#teamMembersPage');
+            const teamProjectsTab = document.querySelector('#teamProjectsPage');
+
+            teamMainTab.style.display = 'block';
+            teamMembersTab.style.display = 'none';
+            teamProjectsTab.style.display = 'none';
+
+            teamPanel.classList.add('openAnim');
+            teamPanel.style.display = 'block';
+        }
+    }
+    function setTeamPanelTabIndex(index) {
+        // settings tabs
+        const teamMainTab = document.querySelector('#teamMainPage');
+        const teamMembersTab = document.querySelector('#teamMembersPage');
+        const teamProjectsTab = document.querySelector('#teamProjectsPage');
+
+        if(typeof index == 'number') {
+            if(index) {
+                if (index == 1) {
+                    teamMainTab.style.display = 'block';
+                    teamMembersTab.style.display = 'none';
+                    teamProjectsTab.style.display = 'none';
+                }
+                if (index == 2) {
+                    teamMainTab.style.display = 'none';
+                    teamMembersTab.style.display = 'block';
+                    teamProjectsTab.style.display = 'none';
+                }
+                if (index == 3) {
+                    teamMainTab.style.display = 'none';
+                    teamMembersTab.style.display = 'none';
+                    teamProjectsTab.style.display = 'block';
+                }
+            }
+        }
+    }
+
+
+    /*
+    UNCOMMENT IF YOU HAVE FIREBASE ENABLED!!
+    async function logInToUser(useGitHubProvider) {
+        if(useGitHubProvider == true) {
+            var gitHubProvider = new firebase.auth.GithubAuthProvider();
+            gitHubProvider.addScope('repo');
+            gitHubProvider.addScope('repo:invite');
+            gitHubProvider.addScope('user');
+            gitHubProvider.setCustomParameters({
+                'allow_signup': 'false'
+            });
+
+            await firebase.auth().signInWithRedirect(gitHubProvider);
+        } else {
+            const emailTextBox = document.querySelector("#emailInput");
+            const passwordTextBox = document.querySelector("#passwordInput");
+
+            showMainMenuNotification('Trying to login', 'blue');
+            await firebase.auth().signInWithEmailAndPassword(emailTextBox.value, passwordTextBox.value)
+            .then((userCredential) => {
+                // Signed in
+                var user = userCredential.user;
+                
+                // redirect ourselves to the home page
+                window.location.href = "/";
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+
+                showMainMenuNotification('Failed to login', 'red');
+
+                showMsgBox('Login failed!', 'Failed to login: ' + errorMessage, 
+                    'OK', null, null, null,
+                    () => {
+                        closeExistingMsgBox();
+                    }, null, null, null
+                );
+            });
+        }
+    }
+    async function createUser(useGitHubProvider) {
+        if(useGitHubProvider == true) {
+          var gitHubProvider = new firebase.auth.GithubAuthProvider();
+          gitHubProvider.addScope('repo');
+          gitHubProvider.addScope('repo:invite');
+          gitHubProvider.addScope('user');
+          gitHubProvider.setCustomParameters({
+            'allow_signup': 'true'
+          });
+
+          // now try to create an account using GitHub
+          await firebase.auth().signInWithRedirect(gitHubProvider);
+        } else {
+          const nameTextBox = document.querySelector("#displayNameInput");
+          const emailTextBox = document.querySelector("#newEmailInput");
+          const passwordTextBox = document.querySelector("#newPasswordInput");
+
+          await firebase.auth().createUserWithEmailAndPassword(emailTextBox.value, passwordTextBox.value)
+          .then( async(userCredential) => {
+            // Signed in
+            var user = userCredential.user;
+            
+            await user.updateProfile({
+              displayName: nameTextBox.value
+            }).then(() => {
+              // redirect ourselves to the home page
+              window.location.href = "/";
+            }).catch(error => {
+              var errorCode = error.code;
+              var errorMessage = error.message;
+
+              const errorTextEl = document.querySelector("#errorText");
+              
+              showMsgBox('Login failed!', 'Failed to create an account: ' + errorMessage, 
+                    'OK', null, null, null,
+                    () => {
+                        closeExistingMsgBox();
+                    }, null, null, null
+                );
+            });
+
+            await user.sendEmailVerification()
+            .then(() => {
+                showMsgBox('Email verification', 'An email verification message has been sent to your email', 
+                    'OK', null, null, null,
+                    () => {
+                        closeExistingMsgBox();
+                    }, null, null, null
+                );
+            });
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            showMsgBox('Login failed!', 'Failed to create an account: ' + errorMessage, 
+                    'OK', null, null, null,
+                    () => {
+                        closeExistingMsgBox();
+                    }, null, null, null
+                );
+          });
+        }
+      }
+
+    // settings
+    const logOutBtnEl = document.querySelector('#logOutBtn');
+    logOutBtnEl.addEventListener('click', () => {
+        showMsgBox("Warning", "Are you sure that you want to log out of this account?", 
+            "YES", "NO", null, null,
+            () => {
+                firebase.auth().signOut()
+                .then(() => {
+                    window.location.href = "/";
+                }).catch(error, () => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert("Failed to log out:\n" + errorMessage + "\nCode: " + errorCode);
+                });
+                closeExistingMsgBox();
+            },
+            () => { closeExistingMsgBox(); }, null, null
+        );
+    });
+    */
+  </script>
+</body>
+</html>
